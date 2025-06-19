@@ -23,8 +23,8 @@ html{
     
 }
 body{
-    background-color: #FAFAFA;
-    color:#1F1F1F;
+    background-color: #F5F5F4 ;
+    color:#1C1C1C;
     box-sizing: border-box;
     font-family:Roboto;
     margin: 0;
@@ -76,13 +76,13 @@ body::-webkit-scrollbar {
 }
 
 .cursor-custom{
-    background-color: #D97F76;
+    background-color: #1E88E5;
     /* background: radial-gradient(#D97F76,transparent); */
 
 }
 
 .cursor-custom-before1{
-    background-color: #D97F76;
+    background-color: #1E88E5;
     /* background: radial-gradient(#D97F76,transparent); */
     opacity: 0.3;
     transition:  0.075s ease;
@@ -91,7 +91,7 @@ body::-webkit-scrollbar {
 
 
 .cursor-custom-before2{
-    background-color: #D97F76;
+    background-color: #1E88E5;
 
     /* background: radial-gradient(#D97F76,transparent); */
     opacity: 0.4;
@@ -101,7 +101,7 @@ body::-webkit-scrollbar {
 }
 
 .cursor-custom-before3{
-    background-color: #D97F76;
+    background-color: #1E88E5;
     /* background: radial-gradient(#D97F76,transparent); */
 
     opacity: 0.5;
@@ -110,7 +110,7 @@ body::-webkit-scrollbar {
 }
 
 .cursor-custom-before4{
-    background-color: #D97F76;
+    background-color: #1E88E5;
     /* background: radial-gradient(#D97F76,transparent); */
     opacity: 0.6;
     transition:  0.03s ease;
@@ -201,21 +201,24 @@ header>nav{
     display: flex;
     justify-content:space-around;
     align-items: center;
+    
 }
-
+ol{
+    margin:0;
+}
 .nav-header{
     color: #1F1F1F;
     text-decoration: none;
     transform: scale(1);
     display: inline-block;
     transition:transform 0.3s ease;
-    position: relative;
-}
+    position: relative;}
 
 .nav-header:hover{
     /* background-color: #9AC2D2; */
     text-decoration: underline;
     transform: scale(1.2);
+
 }
 
 .nav-hover,.nav-hover-out {
@@ -224,14 +227,46 @@ header>nav{
     opacity: 0.25;
 
 }
+main{
+    margin-left:80px;
+    margin-right:80px;
+}
+h1{
+    font-family: Montserrat;
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
 
+h2{
+    font-family: Montserrat;
+    font-size: 36px;
+    font-weight: 800;
+}
+
+h3{
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+h2{
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+}
+p{
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight:400 ;
+}
 /* Accueil */
 
 #accueil{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #9AC2D2;
+    background-color: #22252C ;
     width: 100%;
     height: 92vh;
     padding-top: 8vh;
@@ -242,11 +277,6 @@ header>nav{
     margin: auto;
 }
 
-h1{
-    font-size: 75px;
-    font-family:Montserrat;
-    font-weight: 800;
-}
 
 .timeline {
     position: relative;
@@ -297,9 +327,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
 }
-/* 1000 - 160 + 80 / 3 =~ 306 */
 .r1{top: 100px;}
 .r2{top: 500px;}
 .r3{top: 900px;}
@@ -312,7 +340,6 @@ h1{
 height: 60px;}
 
 .box {
-    color: #1F1F1F;
     width: 400px;
     min-height: 200px;
     padding: 20px;
@@ -348,7 +375,7 @@ height: 60px;}
 }
 .btn {
     display: block;
-    background: midnightblue;
+    background: #FF6F61;
     padding: 10px;
     width: 120px;
     text-align: center;
@@ -357,3 +384,53 @@ height: 60px;}
     border-radius: 3px;
     margin-top: 10px;
 }
+
+.container {
+    color: #e5e5e5;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Montserrat, sans-serif;
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  
+  .animation {
+    height: 3rem; 
+    overflow: hidden;
+    margin-left: 1rem;
+  }
+  
+  .roller {
+    display: flex;
+    flex-direction: column;
+    animation: scrollWords 9s infinite;
+    margin-bottom: 2rem;
+  }
+
+  .roller span {
+    padding: 0 0.5rem;
+    white-space: nowrap;
+  }
+  .roller > div > div {
+    height: 3rem;
+  display: flex;
+  align-items: center;
+  }
+  .roller > div {
+    margin-bottom: 4rem;
+  }
+
+
+  .bg1 { background-color: #20a7d8; }
+.bg2 { background-color: #CD921E; }
+.bg3 { background-color: #c10528; }
+  
+  @keyframes scrollWords {
+    0%, 15%   { transform: translateY(0); }
+    25%, 45%  { transform: translateY(-7rem); }
+    55%, 75%  { transform: translateY(-14rem); }
+    85%, 100% { transform: translateY(0); }
+  }
