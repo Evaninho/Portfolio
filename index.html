@@ -1,482 +1,1577 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evan Corbiere - Portfolio Développeur</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #a855f7;
+            --accent-light: #c084fc;
+            --accent-dark: #7e22ce;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a1;
+            --border: #333333;
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+        }
+        
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
-    />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="images/LOGO.png" />
-    <link rel="stylesheet" href="global.css" />
-  </head>
-  <body>
-    <div id="menu-burger" style="display: none;">
-      <div
-        style="
-          background-color: rgba(135, 135, 135, 0.411);
-          filter: blur(5px);
-          width: 100vw;
-          height: 100vh;
-          z-index: 90;
-          position: fixed;
-          inset: 0;
-        "
-      ></div>
-      <div
-        style="
-          display: none;
-          z-index: 100;
-          width: 100vw;
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          position: fixed;
-          inset: 0;
-          
-        "
-      >
-        <ul style="list-style: none; padding: 0">
-          <li style="text-align: center; margin: 20px 0">
-            <a
-              class="nav-header hovering"
-              href="#accueil"
-              style="
-                font-size: 50px;
-                font-family: 'Poppins', sans-serif;
-                text-transform: uppercase;
-                font-weight: 700;
-                text-decoration: none;
-              "
-              >Accueil</a
-            >
-          </li>
-          <li style="text-align: center; margin: 20px 0">
-            <a
-              class="nav-header hovering"
-              href="#biographie"
-              style="
-                font-size: 50px;
-                font-family: 'Poppins', sans-serif;
-                text-transform: uppercase;
-                font-weight: 700;
-                text-decoration: none;
-              "
-              >Biographie</a
-            >
-          </li>
-          <li style="text-align: center; margin: 20px 0">
-            <a
-              class="nav-header hovering"
-              href="#projets"
-              style="
-                font-size: 50px;
-                font-family: 'Poppins', sans-serif;
-                text-transform: uppercase;
-                font-weight: 700;
-                text-decoration: none;
-              "
-              >Projets</a
-            >
-          </li>
-          <li style="text-align: center; margin: 20px 0">
-            <a
-              class="nav-header hovering"
-              href="#coordonnees"
-              style="
-                font-size: 50px;
-                font-family: 'Poppins', sans-serif;
-                text-transform: uppercase;
-                font-weight: 700;
-                text-decoration: none;
-              "
-              >Coordonnées</a
-            >
-          </li>
-        </ul>
-      </div>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        
+        /* ========== CURSEUR PREMIUM ========== */
+        .cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px var(--accent), 0 0 20px rgba(168, 85, 247, 0.3);
+            transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        height 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cursor.hover {
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 20px var(--accent), inset 0 0 10px rgba(168, 85, 247, 0.2);
+        }
+
+        .cursor.click {
+            animation: cursorClick 0.4s ease-out;
+        }
+
+        @keyframes cursorClick {
+            0% {
+                width: 8px;
+                height: 8px;
+                box-shadow: 0 0 10px var(--accent);
+            }
+            100% {
+                width: 40px;
+                height: 40px;
+                box-shadow: 0 0 0px rgba(168, 85, 247, 0);
+            }
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1.2rem 0;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .logo:hover {
+            text-shadow: 0 0 20px var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .lang-btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .lang-btn.active {
+            color: var(--text-primary);
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .print-btn {
+            padding: 0.6rem 1.2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .print-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle.active {
+            transform: rotate(90deg);
+        }
+
+        /* ========== HERO SECTION ========== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        #hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+            padding: 0 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -2px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(120deg, var(--accent) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent-light);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .btn-secondary:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ========== SECTIONS COMMUNES ========== */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            margin-bottom: 3.5rem;
+            text-align: center;
+            letter-spacing: -1px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+            border-radius: 2px;
+        }
+
+        /* ========== ABOUT SECTION ========== */
+        #about {
+            background: var(--surface);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            animation: fadeInRight 0.8s ease-out;
+        }
+
+        .skill-tag {
+            padding: 0.7rem 1.4rem;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+
+        .skill-tag:hover::before {
+            transform: translateX(0);
+        }
+
+        /* ========== TIMELINE ========== */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--border) 50%, var(--border) 100%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 4rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: calc(50% - 2rem);
+            padding: 1.8rem;
+            background: var(--primary);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--surface);
+            box-shadow: 0 0 0 2px var(--accent), 0 0 15px rgba(168, 85, 247, 0.4);
+            top: 2rem;
+            z-index: 10;
+        }
+
+        .timeline-year {
+            font-weight: 800;
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ========== PROJECTS ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--primary);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.2s; }
+        .project-card:nth-child(3) { animation-delay: 0.3s; }
+        .project-card:nth-child(4) { animation-delay: 0.4s; }
+        .project-card:nth-child(5) { animation-delay: 0.5s; }
+        .project-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.15);
+        }
+
+        .project-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .project-content {
+            padding: 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-title {
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ========== PROJECT MODAL ========== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            margin: auto;
+            background: var(--surface);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow-y: auto;
+            z-index: 2001;
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: all;
+        }
+
+        .modal-header {
+            position: relative;
+            height: 300px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-content {
+            padding: 3rem;
+        }
+
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+
+        .modal-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .modal-meta-label {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .modal-meta-value {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .modal-section-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .modal-media {
+            width: 100%;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .modal-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-media iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* ========== CONTACT ========== */
+        #contact {
+            background: var(--primary);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.8rem;
+            background: var(--surface);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .contact-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--primary);
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+        }
+
+        .footer-divider {
+            color: var(--accent);
+            margin: 0 0.5rem;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ========== MEDIA QUERIES ========== */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                gap: 2rem;
+                transition: right 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                color: var(--text-primary);
+                font-size: 1.2rem;
+                font-weight: 600;
+                padding: 0.8rem;
+            }
+
+            .nav-links a:hover {
+                background: rgba(168, 85, 247, 0.1);
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 1rem;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 3rem !important;
+                margin-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 1rem;
+            }
+
+            .cursor {
+                display: none;
+            }
+
+            .header-actions {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+            }
+
+            .print-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+        
+            .modal {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-title {
+                font-size: 1.8rem;
+            }
+
+            .modal-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- Project Modal -->
+    <div class="modal" id="projectModal">
+        <button class="close-modal" id="closeModal">
+            <i class="bi bi-x-lg"></i>
+        </button>
+        
+        <div class="modal-header" id="modalHeader">
+            <i class="bi bi-code-slash"></i>
+        </div>
+
+        <div class="modal-content" id="modalContent">
+            <!-- Contenu généré dynamiquement -->
+        </div>
     </div>
-    <i id="menu-burger-icone"
-      class="bi bi-list hovering"
-      style="
-        position: fixed;
-        z-index: 10000;
-        top: 10px;
-        right: 30px;
-        font-size: 35px;
-      "
-    ></i>
 
-    <div class="cursor-custom"></div>
-    <div class="cursor-custom-before1"></div>
-    <div class="cursor-custom-before2"></div>
-    <div class="cursor-custom-before3"></div>
-    <div class="cursor-custom-before4"></div>
-    <div id="loader"></div>
-    <div id="content">
-      <header>
-        <a class="hovering" href="#accueil"
-          ><img id="logo" src="images/LOGO.png" alt="logo"
-        /></a>
+    <!-- Header -->
+    <header>
         <nav>
-          <ol>
-            <a class="nav-header hovering" href="#accueil">Accueil</a>
-          </ol>
-          <ol>
-            <a class="nav-header hovering" href="#biographie">Biographie</a>
-          </ol>
-          <ol>
-            <a class="nav-header hovering" href="#projets">Projets</a>
-          </ol>
-          <ol >
-            <a class="nav-header hovering" href="#coordonnees">Coordonnées</a>
-          </ol>
+            <a href="#hero" class="logo">EC</a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="#about" data-fr="À propos" data-en="About">À propos</a></li>
+                <li><a href="#experience" data-fr="Parcours" data-en="Experience">Parcours</a></li>
+                <li><a href="#projects" data-fr="Projets" data-en="Projects">Projets</a></li>
+                <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="fr">FR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="./CV_CORBIERE_Evan.pdf" class="print-btn" target="_blank" id="printBtn">
+                    <i class="bi bi-printer"></i>
+                    <span data-fr="Imprimer CV" data-en="Print CV">Imprimer CV</span>
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle">
+                <i class="bi bi-list"></i>
+            </button>
         </nav>
-      </header>
-      <main>
-        <section id="accueil">
-          <div class="container">
-            <h1>Salut 👋 je suis</h1>
-            <section class="animation">
-              <div class="roller">
-                <div class="first"><div><span class="bg1">Evan Corbiere</span></div></div>
-                <div class="second"><div><span class="bg2">Développeur Junior</span></div></div>
-                <div class="third"><div><span class="bg3">Web Designer</span></div></div>
-              </div>
-            </section>
-          </div>
-          <script
-            src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-            type="module"
-          ></script>
+    </header>
 
-          <dotlottie-player
-            src="https://lottie.host/5e51a795-799f-47f6-8a2e-c2ad0ec92c14/q36AKR8RbR.lottie"
-            background="transparent"
-            speed="1"
-            style="width: 500px; height: 500px"
-            loop
-            autoplay
-          ></dotlottie-player>
-        </section>
-
-        <section id="biographie">
-          <div class="">
-            <h3>À propos de moi</h3>
-            <p>
-              Je suis développeur web junior, actuellement en fin de 2ᵉ année de
-              BUT MMI (Métiers du Multimédia et de l’Internet). Curieux,
-              dynamique et toujours à l'affût des nouvelles technologies, j’ai
-              su développer un profil polyvalent alliant compétences techniques,
-              créativité et gestion de projet. Côté développement, je maîtrise
-              les langages HTML, CSS et JavaScript. J’ai également des bases
-              solides en Python, PHP, SQL, ainsi qu’en frameworks comme Vue.js
-              et React.js. Cette diversité me permet de m’adapter à différents
-              environnements techniques et de participer à des projets complets,
-              du front au back-end. Durant ma formation, j’ai été formé à la
-              gestion de projet avec les méthodes agiles (Scrum, sprints,
-              gestion avec Gantt ou Miro). Cela m’a permis de travailler
-              efficacement en équipe et de comprendre les enjeux d’une
-              organisation de projet structurée. En parallèle, j’ai acquis des
-              compétences en design graphique et en communication visuelle,
-              notamment sur la suite Adobe (Photoshop, Illustrator, InDesign)
-              ainsi que sur Canva. J’ai également été sensibilisé à l’usage
-              avancé d’Excel pour la gestion de données. Passionné par le web,
-              les outils numériques et la création, je cherche aujourd’hui à
-              m’investir dans des projets qui allient innovation, technique et
-              esthétique. J’apporte à chaque collaboration de la good vibe, de
-              la rigueur, et une vraie envie de progresser.
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span data-fr="Salut 👋 Je suis " data-en="Hi 👋 I'm ">Salut 👋 Je suis </span>
+                <span class="gradient-text">Evan Corbiere</span>
+            </h1>
+            <p class="hero-subtitle" data-fr="Développeur Web Junior & Designer" data-en="Junior Web Developer & Designer">
+                Développeur Web Junior & Designer
             </p>
-            <img src="" alt="" />
-          </div>
-          <h2>Mon parcours professionnel</h2>
-          <div class="box-timeline">
-            <div class="ligne"></div>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary" data-fr="Voir mes projets" data-en="View my projects">
+                    <i class="bi bi-arrow-right"></i>
+                    <span data-fr="Voir mes projets" data-en="View my projects">Voir mes projets</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary" data-fr="Me contacter" data-en="Contact me">
+                    <i class="bi bi-chat-dots"></i>
+                    <span data-fr="Me contacter" data-en="Contact me">Me contacter</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-            <div class="rond r1" data-anim="1">
-              <img src="images/SNCF-removebg-preview.png" alt="" />
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-wrapper">
+            <h2 class="section-title" data-fr="À propos de moi" data-en="About Me">À propos de moi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-fr="Je suis développeur web junior, actuellement en fin de 2ᵉ année de BUT MMI (Métiers du Multimédia et de l'Internet). Curieux, dynamique et toujours à l'affût des nouvelles technologies, j'ai su développer un profil polyvalent alliant compétences techniques, créativité et gestion de projet."
+                       data-en="I'm a junior web developer, currently finishing my 2nd year of BUT MMI (Multimedia and Internet Professions). Curious, dynamic and always on the lookout for new technologies, I've developed a versatile profile combining technical skills, creativity and project management.">
+                        Je suis développeur web junior, actuellement en fin de 2ᵉ année de BUT MMI (Métiers du Multimédia et de l'Internet). Curieux, dynamique et toujours à l'affût des nouvelles technologies, j'ai su développer un profil polyvalent alliant compétences techniques, créativité et gestion de projet.
+                    </p>
+                    <p data-fr="Passionné par le web, les outils numériques et la création, je cherche aujourd'hui à m'investir dans des projets qui allient innovation, technique et esthétique."
+                       data-en="Passionate about the web, digital tools and creation, I'm now looking to invest myself in projects that combine innovation, technique and aesthetics.">
+                        Passionné par le web, les outils numériques et la création, je cherche aujourd'hui à m'investir dans des projets qui allient innovation, technique et esthétique.
+                    </p>
+                </div>
+                <div class="skills">
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Vue.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PHP</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Adobe Suite</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Agile/Scrum</span>
+                </div>
             </div>
-            <div class="rond r2" data-anim="2">
-              <img src="images/domusvi-android-chr-512x512.png" alt="" />
-            </div>
-            <div class="rond r3" data-anim="3">
-              <img
-                src="images/logo_iut_couleurs_HD_rvb__1_-removebg-preview (2).png"
-                alt=""
-              />
-            </div>
-            <div class="rond r4" data-anim="4">
-              <img src="images/3OkRJ1IX_400x400-removebg-preview.png" alt="" />
-            </div>
+        </div>
+    </section>
 
-            <div class="box b1" data-anim="1">
-              <h2>2025</h2>
-              <h3>Stage de 2ème année à la SNCF</h3>
-              <p>
-                J'ai effectué un stage au Technicentre des Ardoines, à
-                Vitry-sur-Seine (27 rue des Fusillés). J’ai intégré pendant 11
-                semaines le pôle digital, dans lequel j’ai pu découvrir de
-                nouvelles méthodes de travail, mais surtout, j’ai appris à être
-                autonome et à mieux comprendre la vie en entreprise.
-              </p>
-            </div>
-            <div class="box b2" data-anim="2">
-              <h2>2024</h2>
-              <h3>Templitudes de bretigny</h3>
-              <p>
-                Pendant le mois d’août 2024, j’ai effectué un job d’été de trois
-                semaines chez Les Templitudes de Brétigny-sur-Orge (Résidence
-                services seniors), en tant qu’agent technique. J’ai réalisé de
-                nombreuses missions diverses et variées pour le confort des
-                résidents. Les mots-clés de cette expérience furent patience et
-                autonomie, car elle m’a demandé – et permis – de développer mes
-                compétences en improvisation, en gestion du stress, ainsi qu’en
-                prise de responsabilité.
-              </p>
-            </div>
-            <div class="box b3" data-anim="3">
-              <h2>2023-2026</h2>
-              <h3>BUT MMI</h3>
-              <p>
-                J'ai suivi un BUT (Bachelor Universitaire de Technologie) en MMI
-                (Métiers du Multimédia et de l'Internet) pendant trois ans au
-                site de Jean Jaures de Blois. Au cours de cette formation, j'ai
-                appris de nombreuses choses, que ce soit la manipulation
-                d'outils spécifiques, mais surtout, j'ai découvert de nouveaux
-                domaines comme la programmation (avec de nouveaux langages),
-                l’audiovisuel, le graphisme (notamment avec la suite Adobe),
-                ainsi que la gestion de projet et la communication.
-              </p>
-            </div>
-            <div class="box b4" data-anim="4">
-              <h2>2023</h2>
-              <h3>Obtention du Bac</h3>
-              <p>
-                J’ai obtenu un baccalauréat général en 2023, avec les
-                spécialités Numérique et Sciences Informatiques (NSI) ainsi que
-                Mathématiques. Ces enseignements m'ont permis d'acquérir des
-                bases solides en logique algorithmique, en programmation, et en
-                résolution de problèmes mathématiques, ce qui m’a bien préparé
-                pour la suite de mes études en BUT MMI.
-              </p>
-            </div>
-          </div>
-        </section>
+    <!-- Experience Timeline -->
+    <section id="experience">
+        <div class="section-wrapper">
+            <h2 class="section-title" data-fr="Mon Parcours" data-en="My Experience">Mon Parcours</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2025</div>
+                        <h3 class="timeline-title" data-fr="Stage SNCF - Technicentre des Ardoines" data-en="SNCF Internship - Technicentre des Ardoines">Stage SNCF - Technicentre des Ardoines</h3>
+                        <p class="timeline-description" data-fr="11 semaines au sein du pôle digital. Apprentissage de l'autonomie et découverte de nouvelles méthodes de travail en entreprise."
+                           data-en="11 weeks in the digital department. Learning autonomy and discovering new working methods in a company.">
+                            11 semaines au sein du pôle digital. Apprentissage de l'autonomie et découverte de nouvelles méthodes de travail en entreprise.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
 
-        <section id="projets">
-          <h2>Mes Projets</h2>
-          <div
-            id="carouselExampleCaptions"
-            class="carousel slide"
-            data-bs-ride="carousel"
-          >
-            <div class="carousel-indicators">
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="0"
-                class="active"
-                aria-current="true"
-                aria-label="Slide 1"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="1"
-                aria-label="Slide 2"
-              ></button>
-              <button
-                type="button"
-                data-bs-target="#carouselExampleCaptions"
-                data-bs-slide-to="2"
-                aria-label="Slide 3"
-              ></button>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h3 class="timeline-title" data-fr="Les Templitudes de Brétigny" data-en="Les Templitudes de Brétigny">Les Templitudes de Brétigny</h3>
+                        <p class="timeline-description" data-fr="Agent technique pendant 3 semaines. Développement de compétences en gestion du stress et prise de responsabilité."
+                           data-en="Technical agent for 3 weeks. Development of stress management skills and taking responsibility.">
+                            Agent technique pendant 3 semaines. Développement de compétences en gestion du stress et prise de responsabilité.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023-2026</div>
+                        <h3 class="timeline-title" data-fr="BUT MMI - IUT de Blois" data-en="BUT MMI - IUT of Blois">BUT MMI - IUT de Blois</h3>
+                        <p class="timeline-description" data-fr="Formation complète en développement web, audiovisuel, graphisme (Adobe Suite), et gestion de projet. Apprentissage de multiples langages et outils."
+                           data-en="Complete training in web development, audiovisual, graphic design (Adobe Suite), and project management. Learning multiple languages and tools.">
+                            Formation complète en développement web, audiovisuel, graphisme (Adobe Suite), et gestion de projet. Apprentissage de multiples langages et outils.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <h3 class="timeline-title" data-fr="Baccalauréat Général" data-en="High School Diploma">Baccalauréat Général</h3>
+                        <p class="timeline-description" data-fr="Spécialités NSI et Mathématiques. Bases solides en logique algorithmique et programmation."
+                           data-en="Specialties in Computer Science and Mathematics. Strong foundation in algorithmic logic and programming.">
+                            Spécialités NSI et Mathématiques. Bases solides en logique algorithmique et programmation.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
             </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="/images/LOGO.png" class="d-block w-100" alt="..." />
-                <div
-                  class="carousel-caption d-none d-md-block"
-                  style="color: black"
-                >
-                  <h5>Rapport de stage</h5>
-                  <p>Voici mon rapport de stage de 2025 de ma 2ème année</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-wrapper">
+            <h2 class="section-title" data-fr="Mes Projets" data-en="My Projects">Mes Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card" data-project="olympeak">
+                    <div class="project-image">
+                        <i class="bi bi-code-slash"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Olympeak" data-en="Olympeak">Olympeak</h3>
+                        <p class="project-description" data-fr="Projet de développement web complet avec design moderne et fonctionnalités avancées."
+                           data-en="Complete web development project with modern design and advanced features.">
+                            Projet de développement web complet avec design moderne et fonctionnalités avancées.
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>
-                    Some representative placeholder content for the second
-                    slide.
-                  </p>
+
+                <div class="project-card" data-project="a-frame">
+                    <div class="project-image">
+                        <i class="bi bi-palette"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Projet A-Frame" data-en="A-Frame Project">Projet A-Frame</h3>
+                        <p class="project-description" data-fr="Expérience immersive en réalité virtuelle avec A-Frame et WebXR."
+                           data-en="Immersive virtual reality experience with A-Frame and WebXR.">
+                            Expérience immersive en réalité virtuelle avec A-Frame et WebXR.
+                        </p>
+                    </div>
                 </div>
-              </div>
-              <div class="carousel-item">
-                <img src="..." class="d-block w-100" alt="..." />
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>
-                    Some representative placeholder content for the third slide.
-                  </p>
+
+                <div class="project-card" data-project="blackened-corvus">
+                    <div class="project-image">
+                        <i class="bi bi-music-note-beamed"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Blackened Corvus" data-en="Blackened Corvus">Blackened Corvus</h3>
+                        <p class="project-description" data-fr="Site web pour un groupe de métal mélodique. Projet avec clients réels."
+                           data-en="Website for a melodic metal band. Real client project.">
+                            Site web pour un groupe de métal mélodique. Projet avec clients réels.
+                        </p>
+                    </div>
                 </div>
-              </div>
+
+                <div class="project-card" data-project="accessibility-site">
+                    <div class="project-image">
+                        <i class="bi bi-universal-access"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Site Accessibilité" data-en="Accessibility Site">Site Accessibilité</h3>
+                        <p class="project-description" data-fr="Projet d'accessibilité numérique pour les utilisateurs autistes."
+                           data-en="Digital accessibility project for autistic users.">
+                            Projet d'accessibilité numérique pour les utilisateurs autistes.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="sncf-report">
+                    <div class="project-image">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Rapport Stage SNCF" data-en="SNCF Report">Rapport Stage SNCF</h3>
+                        <p class="project-description" data-fr="Documentation complète de mon expérience au Technicentre des Ardoines."
+                           data-en="Complete documentation of my internship at Technicentre des Ardoines.">
+                            Documentation complète de mon expérience au Technicentre des Ardoines.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="design-projects">
+                    <div class="project-image">
+                        <i class="bi bi-paint-bucket"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Projets Design" data-en="Design Projects">Projets Design</h3>
+                        <p class="project-description" data-fr="Diverses créations graphiques réalisées avec la suite Adobe."
+                           data-en="Various graphic creations with Adobe Suite.">
+                            Diverses créations graphiques réalisées avec la suite Adobe.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="prev"
-            >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </section>
-      </main>
-      <footer>
-        <section id="coordonnees"></section>
-      </footer>
-    </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-wrapper">
+            <h2 class="section-title" data-fr="Me Contacter" data-en="Contact Me">Me Contacter</h2>
+            <div class="contact-content">
+                <p class="contact-text" data-fr="Vous avez un projet en tête ? N'hésitez pas à me contacter !"
+                   data-en="Do you have a project in mind? Feel free to contact me!">
+                    Vous avez un projet en tête ? N'hésitez pas à me contacter !
+                </p>
+                <div class="contact-links">
+                    <a href="mailto:evan.corbiere91@gmail.com" class="contact-link">
+                        <i class="bi bi-envelope"></i>
+                        Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/evan-corbiere-7435b029a/" target="_blank" class="contact-link">
+                        <i class="bi bi-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/Evaninho" target="_blank" class="contact-link">
+                        <i class="bi bi-github"></i>
+                        GitHub
+                    </a>
+                    <a href="./CV_CORBIERE_Evan.pdf" target="_blank" class="contact-link" id="cvLink">
+                        <i class="bi bi-file-earmark-person-fill"></i>
+                        <span data-fr="Mon CV" data-en="My CV">Mon CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer
+    <footer>
+        <p>© 2025 Evan Corbiere <span class="footer-divider">•</span> <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></p>
+    </footer> -->
+
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        let cursor = document.querySelector(".cursor-custom");
-        let cursor_before1 = document.querySelector(".cursor-custom-before1");
-        let cursor_before2 = document.querySelector(".cursor-custom-before2");
-        let cursor_before3 = document.querySelector(".cursor-custom-before3");
-        let cursor_before4 = document.querySelector(".cursor-custom-before4");
+        // ========== PROJECT DATA ==========
+        const projectData = {
+            olympeak: {
+                title: 'Olympeak',
+                year: '2024-2025',
+                status: 'En cours',
+                description: 'Olympeak est un projet complet de développement web moderne. Il combine design innovant et fonctionnalités avancées pour créer une expérience utilisateur exceptionnelle.',
+                context: 'Réalisé dans le cadre de ma formation BUT MMI, ce projet démontre ma maîtrise des technologies web modernes et ma capacité à créer des solutions complètes.',
+                realization: 'Développement en React.js, design Figma, intégration API, gestion d\'état complexe et responsive design.',
+                image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
+                link: '#'
+            },
+            'a-frame': {
+                title: 'Projet A-Frame',
+                year: '2024',
+                status: 'Terminé',
+                description: 'Création d\'une expérience immersive en réalité virtuelle utilisant A-Frame. Ce projet explore les possibilités du WebXR et de la 3D sur le web.',
+                context: 'Projet pédagogique pour explorer les technologies de réalité virtuelle web. Démontre mes compétences en développement 3D et en technologies émergentes.',
+                realization: 'Framework A-Frame, WebXR API, 3D modeling, interactions utilisateur avancées et optimisation de performance.',
+                image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
+                link: '#'
+            },
+            'blackened-corvus': {
+                title: 'Blackened Corvus',
+                year: '2024',
+                status: 'Terminé',
+                description: 'Site web professionnel pour Blackened Corvus, un groupe de métal mélodique. Projet réalisé avec des clients réels mettant l\'accent sur l\'identité visuelle et l\'expérience utilisateur.',
+                context: 'Première expérience en tant que développeur freelance. Client réel exigeant une présence web forte et une identité visuelle cohérente.',
+                realization: 'Design personnalisé, développement responsive, intégration musique, galerie médias, optimisation SEO et performance.',
+                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&h=400&fit=crop',
+                link: '#'
+            },
+            'accessibility-site': {
+                title: 'Site Accessibilité Numérique',
+                year: '2024',
+                status: 'Terminé',
+                description: 'Projet d\'accessibilité numérique conçu spécifiquement pour les utilisateurs autistes. Respecte les normes WCAG et offre une expérience adaptée.',
+                context: 'Projet fondamental pour comprendre l\'importance de l\'accessibilité web. Conception inclusive et respect des bonnes pratiques.',
+                realization: 'Normes WCAG 2.1 AA, contrastes optimisés, navigation au clavier, textes alternatifs, réduction des animations optionnelle.',
+                image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
+                link: '#'
+            },
+            'sncf-report': {
+                title: 'Rapport de Stage SNCF',
+                year: '2025',
+                status: 'Terminé',
+                description: 'Rapport détaillé de mon expérience de 11 semaines au Technicentre des Ardoines. Documentation complète des apprentissages et des projets réalisés.',
+                context: 'Stage de fin de 2ème année de BUT MMI. Immersion dans un environnement professionnel réel au sein de la direction digitale de SNCF.',
+                realization: 'Documentation professionnelle, analyses de projets, retours d\'expérience, recommandations et réflexions sur mon développement professionnel.',
+                image: 'https://images.unsplash.com/photo-1516534775068-bb57e39c8ac8?w=600&h=400&fit=crop',
+                link: './Rapport de stage.pdf'
+            },
+            'design-projects': {
+                title: 'Projets Design',
+                year: '2023-2024',
+                status: 'Diversifiés',
+                description: 'Collection de projets de design graphique réalisés avec la suite Adobe (Photoshop, Illustrator, InDesign). Explorant différents styles et techniques.',
+                context: 'Formation continue en design graphique. Exploration de différents domaines : identité visuelle, affiche, emballage, design print.',
+                realization: 'Adobe Creative Suite, design graphique, illustration, mise en page professionnelle et gestion des couleurs avancée.',
+                image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
+                link: '#'
+            }
+        };
 
-        document.addEventListener("mousemove", function (e) {
-          cursor.style.left = e.clientX + "px";
-          cursor.style.top = e.clientY + "px";
-          cursor_before1.style.left = e.clientX + "px";
-          cursor_before1.style.top = e.clientY + "px";
-          cursor_before2.style.left = e.clientX + "px";
-          cursor_before2.style.top = e.clientY + "px";
-          cursor_before3.style.left = e.clientX + "px";
-          cursor_before3.style.top = e.clientY + "px";
-          cursor_before4.style.left = e.clientX + "px";
-          cursor_before4.style.top = e.clientY + "px";
+        // ========== CUSTOM CURSOR ==========
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        const speed = 0.2;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
 
-        document.addEventListener("click", function () {
-          cursor.classList.remove("click-cursor");
-          cursor_before1.classList.remove("click-cursor");
-          cursor_before2.classList.remove("click-cursor");
-          cursor_before3.classList.remove("click-cursor");
-          cursor_before4.classList.remove("click-cursor");
+        function animateCursor() {
+            const distX = mouseX - cursorX;
+            const distY = mouseY - cursorY;
+            
+            cursorX += distX * speed;
+            cursorY += distY * speed;
+            
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
 
-          void cursor.offsetWidth;
-          cursor.classList.add("click-cursor");
-          cursor_before1.classList.add("click-cursor");
-          cursor_before2.classList.add("click-cursor");
-          cursor_before3.classList.add("click-cursor");
-          cursor_before4.classList.add("click-cursor");
-
-          setTimeout(() => {
-            cursor.classList.remove("click-cursor");
-            cursor_before1.classList.remove("click-cursor");
-            cursor_before2.classList.remove("click-cursor");
-            cursor_before3.classList.remove("click-cursor");
-            cursor_before4.classList.remove("click-cursor");
-          }, 300);
+        // Cursor hover effect
+        const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-tag');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
         });
 
-        setTimeout(() => {
-          const loader = document.getElementById("loader");
-          const content = document.getElementById("content");
-
-          loader.style.display = "none";
-
-          content.classList.add("visible");
-        }, 1500);
-
-        const element = document.getElementById("accueil");
-
-        window.addEventListener("scroll", function () {
-          const scrollY = window.scrollY;
-          const maxScroll = 2000;
-          let widthPercent = 1.1 - Math.min(scrollY / maxScroll, 0.8);
-          element.style.width = `${widthPercent * 100}%`;
+        // Cursor click effect
+        document.addEventListener('click', () => {
+            cursor.classList.add('click');
+            setTimeout(() => cursor.classList.remove('click'), 400);
         });
-        let hovering = document.querySelectorAll(".hovering");
-        hovering.forEach((e) => {
-          e.addEventListener("mouseenter", function () {
-            cursor.classList.add("nav-hover");
-            cursor_before1.classList.add("nav-hover");
-            cursor_before2.classList.add("nav-hover");
-            cursor_before3.classList.add("nav-hover");
-            cursor_before4.classList.add("nav-hover");
-          });
-          e.addEventListener("mouseleave", function () {
-            cursor.classList.remove("nav-hover");
-            cursor.classList.add("nav-hover-out");
 
-            cursor_before1.classList.remove("nav-hover");
-            cursor_before1.classList.add("nav-hover-out");
+        // ========== MOBILE MENU ==========
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
 
-            cursor_before2.classList.remove("nav-hover");
-            cursor_before2.classList.add("nav-hover-out");
-
-            cursor_before3.classList.remove("nav-hover");
-            cursor_before3.classList.add("nav-hover-out");
-
-            cursor_before4.classList.remove("nav-hover");
-            cursor_before4.classList.add("nav-hover-out");
-
-            setTimeout(() => {
-              cursor.classList.remove("nav-hover-out");
-              cursor_before1.classList.remove("nav-hover-out");
-              cursor_before2.classList.remove("nav-hover-out");
-              cursor_before3.classList.remove("nav-hover-out");
-              cursor_before4.classList.remove("nav-hover-out");
-            }, 100);
-          });
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
         });
-      });
 
-      let burgerIcone=document.querySelector('#menu-burger-icone');
-      let burger=document.querySelector('#menu-burger');
-      burgerIcone.addEventListener('click',function(){
-        burger.style.display='block';
-      })
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !menuToggle.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+
+        // ========== LANGUAGE SWITCHER ==========
+        const langButtons = document.querySelectorAll('.lang-btn');
+        let currentLang = 'fr';
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                if (lang === currentLang) return;
+
+                currentLang = lang;
+                document.documentElement.lang = lang;
+
+                langButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                document.querySelectorAll('[data-fr]').forEach(el => {
+                    if (el.dataset[lang]) {
+                        el.textContent = el.dataset[lang];
+                    }
+                });
+            });
+        });
+
+        // ========== PROJECT MODAL ==========
+        const projectCards = document.querySelectorAll('[data-project]');
+        const modal = document.getElementById('projectModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModal = document.getElementById('closeModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalHeader = document.getElementById('modalHeader');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                const projectId = card.dataset.project;
+                const project = projectData[projectId];
+
+                if (!project) return;
+
+                // Remplir le modal
+                modalHeader.innerHTML = '<i class="bi bi-code-slash"></i>';
+                
+                modalContent.innerHTML = `
+                    <h2 class="modal-title">${project.title}</h2>
+                    <div class="modal-meta">
+                        <div class="modal-meta-item">
+                            <span class="modal-meta-label">${currentLang === 'fr' ? 'Année' : 'Year'}</span>
+                            <span class="modal-meta-value">${project.year}</span>
+                        </div>
+                        <div class="modal-meta-item">
+                            <span class="modal-meta-label">${currentLang === 'fr' ? 'Statut' : 'Status'}</span>
+                            <span class="modal-meta-value">${project.status}</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title">${currentLang === 'fr' ? 'Présentation' : 'Overview'}</h3>
+                        <p class="modal-section-text">${project.description}</p>
+                    </div>
+
+                    <div class="modal-media">
+                        <img src="${project.image}" alt="${project.title}" />
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title">${currentLang === 'fr' ? 'Contexte' : 'Context'}</h3>
+                        <p class="modal-section-text">${project.context}</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title">${currentLang === 'fr' ? 'Réalisation' : 'Realization'}</h3>
+                        <p class="modal-section-text">${project.realization}</p>
+                    </div>
+
+                    ${project.link !== '#' ? `
+                        <div class="modal-section">
+                            <a href="${project.link}" target="_blank" class="btn btn-primary">
+                                <i class="bi bi-arrow-up-right"></i>
+                                ${currentLang === 'fr' ? 'Voir le projet' : 'View project'}
+                            </a>
+                        </div>
+                    ` : ''}
+                `;
+
+                // Afficher le modal
+                modal.classList.add('active');
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        modalOverlay.addEventListener('click', () => {
+            modal.classList.remove('active');
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Fermer avec Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // ========== SMOOTH SCROLL ANIMATION ==========
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observer pour d'autres éléments si nécessaire
+        document.querySelectorAll('.timeline-item, .project-card').forEach(el => {
+            if (el.style.opacity === '0') {
+                observer.observe(el);
+            }
+        });
     </script>
-  </body>
+</body>
 </html>
