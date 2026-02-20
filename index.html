@@ -650,6 +650,13 @@
             background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
         }
 
+        img>.project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .project-content {
             padding: 1.8rem;
             flex: 1;
@@ -1199,7 +1206,7 @@
             <div class="projects-grid">
                 <div class="project-card" data-project="olympeak">
                     <div class="project-image">
-                        <i class="bi bi-code-slash"></i>
+                        <img src="./images/Olympeak Fond.png" alt="">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title" data-fr="Olympeak" data-en="Olympeak">Olympeak</h3>
@@ -1212,7 +1219,7 @@
 
                 <div class="project-card" data-project="a-frame">
                     <div class="project-image">
-                        <i class="bi bi-palette"></i>
+                        <img src="./images/a-frame.png" alt="">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title" data-fr="Projet A-Frame" data-en="A-Frame Project">Projet A-Frame</h3>
@@ -1225,7 +1232,7 @@
 
                 <div class="project-card" data-project="blackened-corvus">
                     <div class="project-image">
-                        <i class="bi bi-music-note-beamed"></i>
+                        <img src="./images/Blackened corvus.png" alt="">                    
                     </div>
                     <div class="project-content">
                         <h3 class="project-title" data-fr="Blackened Corvus" data-en="Blackened Corvus">Blackened Corvus</h3>
@@ -1238,7 +1245,7 @@
 
                 <div class="project-card" data-project="accessibility-site">
                     <div class="project-image">
-                        <i class="bi bi-universal-access"></i>
+                        <img src="./images/Autiste.png" alt="">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title" data-fr="Site Accessibilité" data-en="Accessibility Site">Site Accessibilité</h3>
@@ -1249,9 +1256,21 @@
                     </div>
                 </div>
 
+                <div class="project-card" data-project="sportivea">
+                    <div class="project-image">
+                        <img src="./images/sportivea.png" alt="">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title" data-fr="Sportivea" data-en="Sportivea">Sportivea</h3>
+                        <p class="project-description" data-fr="Sportivea est une plateforme collaborative d’agenda sportif permettant de consulter, ajouter et voter pour des événements sportifs (tournois, matchs, compétitions), qu’ils soient amateurs, associatifs ou professionnels.."
+                           data-en="Sportivea is a collaborative sports agenda platform that allows users to view, add and vote for sporting events (tournaments, matches, competitions), whether amateur, associative or professional.">
+                            Sportivea est une plateforme collaborative d’agenda sportif</p>
+                    </div>
+                </div>
+
                 <div class="project-card" data-project="sncf-report">
                     <div class="project-image">
-                        <i class="bi bi-file-earmark-text"></i>
+                        <img src="./images/rapport-sncf.png" alt="">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title" data-fr="Rapport Stage SNCF" data-en="SNCF Report">Rapport Stage SNCF</h3>
@@ -1288,6 +1307,10 @@
                     Vous avez un projet en tête ? N'hésitez pas à me contacter !
                 </p>
                 <div class="contact-links">
+                    <a href="https://github.com/Evaninho" target="_blank" class="contact-link">
+                        <i class="bi bi-github"></i>
+                        GitHub
+                    </a>
                     <a href="mailto:evan.corbiere91@gmail.com" class="contact-link">
                         <i class="bi bi-envelope"></i>
                         Email
@@ -1295,10 +1318,6 @@
                     <a href="https://www.linkedin.com/in/evan-corbiere-7435b029a/" target="_blank" class="contact-link">
                         <i class="bi bi-linkedin"></i>
                         LinkedIn
-                    </a>
-                    <a href="https://github.com/Evaninho" target="_blank" class="contact-link">
-                        <i class="bi bi-github"></i>
-                        GitHub
                     </a>
                     <a href="./CV_CORBIERE_Evan.pdf" target="_blank" class="contact-link" id="cvLink">
                         <i class="bi bi-file-earmark-person-fill"></i>
@@ -1309,22 +1328,17 @@
         </div>
     </section>
 
-    <!-- Footer
-    <footer>
-        <p>© 2025 Evan Corbiere <span class="footer-divider">•</span> <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></p>
-    </footer> -->
-
     <script>
         // ========== PROJECT DATA ==========
         const projectData = {
-            olympeak: {
+            'olympeak': {
                 title: 'Olympeak',
                 year: '2024-2025',
-                status: 'En cours',
+                status: 'Terminé',
                 description: 'Olympeak est un projet complet de développement web moderne. Il combine design innovant et fonctionnalités avancées pour créer une expérience utilisateur exceptionnelle.',
                 context: 'Réalisé dans le cadre de ma formation BUT MMI, ce projet démontre ma maîtrise des technologies web modernes et ma capacité à créer des solutions complètes.',
                 realization: 'Développement en React.js, design Figma, intégration API, gestion d\'état complexe et responsive design.',
-                image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
+                image: './images/olympeak.png',
                 link: '#'
             },
             'a-frame': {
@@ -1334,8 +1348,8 @@
                 description: 'Création d\'une expérience immersive en réalité virtuelle utilisant A-Frame. Ce projet explore les possibilités du WebXR et de la 3D sur le web.',
                 context: 'Projet pédagogique pour explorer les technologies de réalité virtuelle web. Démontre mes compétences en développement 3D et en technologies émergentes.',
                 realization: 'Framework A-Frame, WebXR API, 3D modeling, interactions utilisateur avancées et optimisation de performance.',
-                image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop',
-                link: '#'
+                image: './images/a-frame.png',
+                link: 'https://evancorbiere.alwaysdata.net/'
             },
             'blackened-corvus': {
                 title: 'Blackened Corvus',
@@ -1344,8 +1358,8 @@
                 description: 'Site web professionnel pour Blackened Corvus, un groupe de métal mélodique. Projet réalisé avec des clients réels mettant l\'accent sur l\'identité visuelle et l\'expérience utilisateur.',
                 context: 'Première expérience en tant que développeur freelance. Client réel exigeant une présence web forte et une identité visuelle cohérente.',
                 realization: 'Design personnalisé, développement responsive, intégration musique, galerie médias, optimisation SEO et performance.',
-                image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=600&h=400&fit=crop',
-                link: '#'
+                image: './images/Blackened corvus.png',
+                link: 'https://www.canva.com/design/DAHBwT4_rlY/b7vPRiFs3wInEZyrMQEeAw/edit?utm_content=DAHBwT4_rlY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'
             },
             'accessibility-site': {
                 title: 'Site Accessibilité Numérique',
@@ -1354,8 +1368,18 @@
                 description: 'Projet d\'accessibilité numérique conçu spécifiquement pour les utilisateurs autistes. Respecte les normes WCAG et offre une expérience adaptée.',
                 context: 'Projet fondamental pour comprendre l\'importance de l\'accessibilité web. Conception inclusive et respect des bonnes pratiques.',
                 realization: 'Normes WCAG 2.1 AA, contrastes optimisés, navigation au clavier, textes alternatifs, réduction des animations optionnelle.',
-                image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop',
+                image: './images/Autiste.png',
                 link: '#'
+            },
+            'sportivea': {
+                title: 'Site Sportivea',
+                year: '2026',
+                status: 'Terminé',
+                description: 'Sportivea est une plateforme collaborative d’agenda sportif permettant de consulter, ajouter et voter pour des événements sportifs (tournois, matchs, compétitions), qu’ils soient amateurs, associatifs ou professionnels.',
+                context: 'Projet fondamental pour comprendre l\ de l\'accessibilité web. Conception inclusive et respect des bonnes pratiques.',
+                realization: 'Developpement en node.js, express, react, gestion de base de données avec mysql, intégration d\'API tierces pour les données sportives, fonctionnalités de vote et de calendrier interactif.',
+                image: './images/sportivea.png',
+                link: 'http://sportivea.alwaysdata.net/'
             },
             'sncf-report': {
                 title: 'Rapport de Stage SNCF',
@@ -1364,7 +1388,7 @@
                 description: 'Rapport détaillé de mon expérience de 11 semaines au Technicentre des Ardoines. Documentation complète des apprentissages et des projets réalisés.',
                 context: 'Stage de fin de 2ème année de BUT MMI. Immersion dans un environnement professionnel réel au sein de la direction digitale de SNCF.',
                 realization: 'Documentation professionnelle, analyses de projets, retours d\'expérience, recommandations et réflexions sur mon développement professionnel.',
-                image: 'https://images.unsplash.com/photo-1516534775068-bb57e39c8ac8?w=600&h=400&fit=crop',
+                image: './images/rapport-sncf.png',
                 link: './Rapport de stage.pdf'
             },
             'design-projects': {
