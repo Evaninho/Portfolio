@@ -46,6 +46,48 @@
             overflow-x: hidden;
         }
 
+        /* ========== FOND ANIMÉ ========== */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .rotating-shape {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(233, 6, 63, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: rotate 30s linear infinite;
+        }
+
+        .rotating-shape:nth-child(1) {
+            top: -100px;
+            right: -100px;
+            animation-duration: 40s;
+        }
+
+        .rotating-shape:nth-child(2) {
+            bottom: -150px;
+            left: -150px;
+            animation-duration: 50s;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
         
         /* ========== CURSEUR PREMIUM ========== */
         .cursor {
@@ -330,7 +372,7 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.3s cubic-bezier(0.34, 0.96, 0.64, 1);
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -350,7 +392,7 @@
             inset: 0;
             background: var(--accent-light);
             transform: translateX(-100%);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.2s cubic-bezier(0.34, 0.96, 0.64, 1);
             z-index: -1;
         }
 
@@ -394,6 +436,8 @@
         /* ========== SECTIONS COMMUNES ========== */
         section {
             padding: 6rem 2rem;
+            position: relative;
+            z-index: 10;
         }
 
         .section-wrapper {
@@ -464,7 +508,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-primary);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.2s cubic-bezier(0.34, 0.96, 0.64, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -476,7 +520,7 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
             transform: translateX(-100%);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.2s cubic-bezier(0.34, 0.96, 0.64, 1);
             z-index: -1;
         }
 
@@ -489,25 +533,15 @@
             transform: translateX(0);
         }
 
-        /* ========== TIMELINE ========== */
+        /* ========== TIMELINE MODERNISÉE ========== */
         .timeline {
             position: relative;
             padding: 2rem 0;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--accent) 0%, var(--border) 50%, var(--border) 100%);
-        }
-
         .timeline-item {
             display: flex;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             position: relative;
             opacity: 0;
             animation: fadeInUp 0.6s ease-out forwards;
@@ -518,51 +552,62 @@
         .timeline-item:nth-child(3) { animation-delay: 0.3s; }
         .timeline-item:nth-child(4) { animation-delay: 0.4s; }
 
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
+        .timeline-dot {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            margin-right: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 0 8px rgba(168, 85, 247, 0.1), 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .timeline-dot::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 120px;
+            background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item:last-child .timeline-dot::after {
+            display: none;
         }
 
         .timeline-content {
-            width: calc(50% - 2rem);
-            padding: 1.8rem;
+            padding: 1.5rem;
             background: var(--primary);
             border-radius: 8px;
             border: 1px solid var(--border);
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
+            flex: 1;
         }
 
         .timeline-content:hover {
             border-color: var(--accent);
             box-shadow: 0 0 20px rgba(168, 85, 247, 0.1);
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 2rem;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 2rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            background: var(--accent);
-            border-radius: 50%;
-            border: 3px solid var(--surface);
-            box-shadow: 0 0 0 2px var(--accent), 0 0 15px rgba(168, 85, 247, 0.4);
-            top: 2rem;
-            z-index: 10;
+            transform: translateX(10px);
         }
 
         .timeline-year {
             font-weight: 800;
             color: var(--accent);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
 
@@ -579,6 +624,38 @@
             line-height: 1.6;
         }
 
+        /* ========== FILTER BUTTONS ========== */
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--primary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
         /* ========== PROJECTS ========== */
         .projects-grid {
             display: grid;
@@ -591,7 +668,7 @@
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.2s cubic-bezier(0.34, 0.96, 0.64, 1);
             text-decoration: none;
             color: inherit;
             display: flex;
@@ -600,6 +677,10 @@
             position: relative;
             opacity: 0;
             animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .project-card.hidden {
+            display: none;
         }
 
         .project-card:nth-child(1) { animation-delay: 0.1s; }
@@ -615,7 +696,7 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, transparent 100%);
             transform: translateX(-100%);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: transform 0.3s cubic-bezier(0.34, 0.96, 0.64, 1);
             z-index: 1;
             pointer-events: none;
         }
@@ -650,7 +731,7 @@
             background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
         }
 
-        img>.project-image {
+        .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -678,6 +759,19 @@
             color: var(--text-secondary);
             font-size: 0.95rem;
             line-height: 1.6;
+        }
+
+        .project-category {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
         /* ========== PROJECT MODAL ========== */
@@ -744,6 +838,14 @@
             background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.2) 100%);
         }
 
+        .modal-header img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
         .close-modal {
             position: absolute;
             top: 1.5rem;
@@ -770,6 +872,8 @@
 
         .modal-content {
             padding: 3rem;
+            position: relative;
+            z-index: 2;
         }
 
         .modal-title {
@@ -830,12 +934,19 @@
             margin: 2rem 0;
             border: 1px solid var(--border);
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            background: rgba(168, 85, 247, 0.05);
         }
 
         .modal-media img {
             width: 100%;
-            height: auto;
+            height: 100%;
+            object-fit: contain;
             display: block;
+            padding: 2rem;
         }
 
         .modal-media iframe {
@@ -983,24 +1094,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .timeline::before {
-                left: 1rem;
-            }
-
-            .timeline-item {
-                flex-direction: column !important;
-            }
-
-            .timeline-content {
-                width: 100%;
-                margin-left: 3rem !important;
-                margin-right: 0 !important;
-            }
-
-            .timeline-dot {
-                left: 1rem;
-            }
-
             .cursor {
                 display: none;
             }
@@ -1016,7 +1109,6 @@
                 justify-content: center;
             }
 
-        
             .modal {
                 width: 95%;
                 max-height: 95vh;
@@ -1034,10 +1126,48 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .timeline-item {
+                margin-bottom: 2rem;
+            }
+
+            .timeline-dot {
+                width: 30px;
+                height: 30px;
+                margin-right: 1.5rem;
+            }
+
+            .timeline-dot::before {
+                width: 16px;
+                height: 16px;
+            }
+
+            .timeline-dot::after {
+                height: 80px;
+            }
+
+            .timeline-content {
+                padding: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Fond animé -->
+    <div class="animated-bg">
+        <div class="rotating-shape"></div>
+        <div class="rotating-shape"></div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor"></div>
 
@@ -1051,7 +1181,6 @@
         </button>
         
         <div class="modal-header" id="modalHeader">
-            <i class="bi bi-code-slash"></i>
         </div>
 
         <div class="modal-content" id="modalContent">
@@ -1077,7 +1206,7 @@
                     <button class="lang-btn active" data-lang="fr">FR</button>
                     <button class="lang-btn" data-lang="en">EN</button>
                 </div>
-                <a href="./CV_CORBIERE_Evan.pdf" class="print-btn" target="_blank" id="printBtn">
+                <a href="./CV_CORBIERE_Evan.pdf" class="print-btn" target="_blank" id="printBtn" data-fr-href="./CV_CORBIERE_Evan.pdf" data-en-href="./CV_CORBIERE_Evan_EN.pdf">
                     <i class="bi bi-printer"></i>
                     <span data-fr="Imprimer CV" data-en="Print CV">Imprimer CV</span>
                 </a>
@@ -1149,6 +1278,7 @@
             <h2 class="section-title" data-fr="Mon Parcours" data-en="My Experience">Mon Parcours</h2>
             <div class="timeline">
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2025</div>
                         <h3 class="timeline-title" data-fr="Stage SNCF - Technicentre des Ardoines" data-en="SNCF Internship - Technicentre des Ardoines">Stage SNCF - Technicentre des Ardoines</h3>
@@ -1157,10 +1287,10 @@
                             11 semaines au sein du pôle digital. Apprentissage de l'autonomie et découverte de nouvelles méthodes de travail en entreprise.
                         </p>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2024</div>
                         <h3 class="timeline-title" data-fr="Les Templitudes de Brétigny" data-en="Les Templitudes de Brétigny">Les Templitudes de Brétigny</h3>
@@ -1169,10 +1299,10 @@
                             Agent technique pendant 3 semaines. Développement de compétences en gestion du stress et prise de responsabilité.
                         </p>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2023-2026</div>
                         <h3 class="timeline-title" data-fr="BUT MMI - IUT de Blois" data-en="BUT MMI - IUT of Blois">BUT MMI - IUT de Blois</h3>
@@ -1181,10 +1311,10 @@
                             Formation complète en développement web, audiovisuel, graphisme (Adobe Suite), et gestion de projet. Apprentissage de multiples langages et outils.
                         </p>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
 
                 <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-year">2023</div>
                         <h3 class="timeline-title" data-fr="Baccalauréat Général" data-en="High School Diploma">Baccalauréat Général</h3>
@@ -1193,7 +1323,6 @@
                             Spécialités NSI et Mathématiques. Bases solides en logique algorithmique et programmation.
                         </p>
                     </div>
-                    <div class="timeline-dot"></div>
                 </div>
             </div>
         </div>
@@ -1203,21 +1332,31 @@
     <section id="projects">
         <div class="section-wrapper">
             <h2 class="section-title" data-fr="Mes Projets" data-en="My Projects">Mes Projets</h2>
+            
+            <!-- Filtres -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all" data-fr="Tous" data-en="All">Tous</button>
+                <button class="filter-btn" data-filter="dev" data-fr="Développement" data-en="Development">Développement</button>
+                <button class="filter-btn" data-filter="design" data-fr="Design" data-en="Design">Design</button>
+                <button class="filter-btn" data-filter="other" data-fr="Autres" data-en="Other">Autres</button>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card" data-project="olympeak">
+                <div class="project-card" data-project="olympeak" data-category="dev">
                     <div class="project-image">
                         <img src="./images/Olympeak Fond.png" alt="">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title" data-fr="Olympeak" data-en="Olympeak">Olympeak</h3>
+                        <h3 class="project-title">Olympeak</h3>
                         <p class="project-description" data-fr="Projet de développement web complet avec design moderne et fonctionnalités avancées."
                            data-en="Complete web development project with modern design and advanced features.">
                             Projet de développement web complet avec design moderne et fonctionnalités avancées.
                         </p>
+                        <span class="project-category" data-fr="Développement" data-en="Development">Développement</span>
                     </div>
                 </div>
 
-                <div class="project-card" data-project="a-frame">
+                <div class="project-card" data-project="a-frame" data-category="dev">
                     <div class="project-image">
                         <img src="./images/a-frame.png" alt="">
                     </div>
@@ -1227,23 +1366,25 @@
                            data-en="Immersive virtual reality experience with A-Frame and WebXR.">
                             Expérience immersive en réalité virtuelle avec A-Frame et WebXR.
                         </p>
+                        <span class="project-category" data-fr="Développement" data-en="Development">Développement</span>
                     </div>
                 </div>
 
-                <div class="project-card" data-project="blackened-corvus">
+                <div class="project-card" data-project="blackened-corvus" data-category="dev">
                     <div class="project-image">
                         <img src="./images/Blackened corvus.png" alt="">                    
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title" data-fr="Blackened Corvus" data-en="Blackened Corvus">Blackened Corvus</h3>
+                        <h3 class="project-title">Blackened Corvus</h3>
                         <p class="project-description" data-fr="Site web pour un groupe de métal mélodique. Projet avec clients réels."
                            data-en="Website for a melodic metal band. Real client project.">
                             Site web pour un groupe de métal mélodique. Projet avec clients réels.
                         </p>
+                        <span class="project-category" data-fr="Développement" data-en="Development">Développement</span>
                     </div>
                 </div>
 
-                <div class="project-card" data-project="accessibility-site">
+                <div class="project-card" data-project="accessibility-site" data-category="dev">
                     <div class="project-image">
                         <img src="./images/Autiste.png" alt="">
                     </div>
@@ -1253,22 +1394,24 @@
                            data-en="Digital accessibility project for autistic users.">
                             Projet d'accessibilité numérique pour les utilisateurs autistes.
                         </p>
+                        <span class="project-category" data-fr="Développement" data-en="Development">Développement</span>
                     </div>
                 </div>
 
-                <div class="project-card" data-project="sportivea">
+                <div class="project-card" data-project="sportivea" data-category="dev">
                     <div class="project-image">
                         <img src="./images/sportivea.png" alt="">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title" data-fr="Sportivea" data-en="Sportivea">Sportivea</h3>
-                        <p class="project-description" data-fr="Sportivea est une plateforme collaborative d’agenda sportif permettant de consulter, ajouter et voter pour des événements sportifs (tournois, matchs, compétitions), qu’ils soient amateurs, associatifs ou professionnels.."
+                        <h3 class="project-title">Sportivea</h3>
+                        <p class="project-description" data-fr="Sportivea est une plateforme collaborative d'agenda sportif permettant de consulter, ajouter et voter pour des événements sportifs (tournois, matchs, compétitions), qu'ils soient amateurs, associatifs ou professionnels.."
                            data-en="Sportivea is a collaborative sports agenda platform that allows users to view, add and vote for sporting events (tournaments, matches, competitions), whether amateur, associative or professional.">
-                            Sportivea est une plateforme collaborative d’agenda sportif</p>
+                            Sportivea est une plateforme collaborative d'agenda sportif</p>
+                        <span class="project-category" data-fr="Développement" data-en="Development">Développement</span>
                     </div>
                 </div>
 
-                <div class="project-card" data-project="sncf-report">
+                <div class="project-card" data-project="sncf-report" data-category="other">
                     <div class="project-image">
                         <img src="./images/rapport-sncf.png" alt="">
                     </div>
@@ -1278,10 +1421,11 @@
                            data-en="Complete documentation of my internship at Technicentre des Ardoines.">
                             Documentation complète de mon expérience au Technicentre des Ardoines.
                         </p>
+                        <span class="project-category" data-fr="Autres" data-en="Other">Autres</span>
                     </div>
                 </div>
 
-                <div class="project-card" data-project="design-projects">
+                <div class="project-card" data-project="design-projects" data-category="design">
                     <div class="project-image">
                         <i class="bi bi-paint-bucket"></i>
                     </div>
@@ -1291,6 +1435,7 @@
                            data-en="Various graphic creations with Adobe Suite.">
                             Diverses créations graphiques réalisées avec la suite Adobe.
                         </p>
+                        <span class="project-category" data-fr="Design" data-en="Design">Design</span>
                     </div>
                 </div>
             </div>
@@ -1319,7 +1464,7 @@
                         <i class="bi bi-linkedin"></i>
                         LinkedIn
                     </a>
-                    <a href="./CV_CORBIERE_Evan.pdf" target="_blank" class="contact-link" id="cvLink">
+                    <a href="./CV_CORBIERE_Evan.pdf" data-fr-href="./CV_CORBIERE_Evan.pdf" data-en-href="./CV_CORBIERE_Evan_EN.pdf" target="_blank" class="contact-link" id="cvLink" >
                         <i class="bi bi-file-earmark-person-fill"></i>
                         <span data-fr="Mon CV" data-en="My CV">Mon CV</span>
                     </a>
@@ -1336,8 +1481,11 @@
                 year: '2024-2025',
                 status: 'Terminé',
                 description: 'Olympeak est un projet complet de développement web moderne. Il combine design innovant et fonctionnalités avancées pour créer une expérience utilisateur exceptionnelle.',
+                descriptionEN: 'Olympeak is a complete modern web development project. It combines innovative design and advanced features to create an exceptional user experience.',
                 context: 'Réalisé dans le cadre de ma formation BUT MMI, ce projet démontre ma maîtrise des technologies web modernes et ma capacité à créer des solutions complètes.',
+                contextEN: 'Created as part of my BUT MMI training, this project demonstrates my mastery of modern web technologies and ability to create complete solutions.',
                 realization: 'Développement en React.js, design Figma, intégration API, gestion d\'état complexe et responsive design.',
+                realizationEN: 'Development in React.js, Figma design, API integration, complex state management and responsive design.',
                 image: './images/olympeak.png',
                 link: '#'
             },
@@ -1346,8 +1494,11 @@
                 year: '2024',
                 status: 'Terminé',
                 description: 'Création d\'une expérience immersive en réalité virtuelle utilisant A-Frame. Ce projet explore les possibilités du WebXR et de la 3D sur le web.',
+                descriptionEN: 'Creating an immersive virtual reality experience using A-Frame. This project explores the possibilities of WebXR and 3D on the web.',
                 context: 'Projet pédagogique pour explorer les technologies de réalité virtuelle web. Démontre mes compétences en développement 3D et en technologies émergentes.',
+                contextEN: 'Educational project to explore web virtual reality technologies. Demonstrates my skills in 3D development and emerging technologies.',
                 realization: 'Framework A-Frame, WebXR API, 3D modeling, interactions utilisateur avancées et optimisation de performance.',
+                realizationEN: 'A-Frame Framework, WebXR API, 3D modeling, advanced user interactions and performance optimization.',
                 image: './images/a-frame.png',
                 link: 'https://evancorbiere.alwaysdata.net/'
             },
@@ -1356,8 +1507,11 @@
                 year: '2024',
                 status: 'Terminé',
                 description: 'Site web professionnel pour Blackened Corvus, un groupe de métal mélodique. Projet réalisé avec des clients réels mettant l\'accent sur l\'identité visuelle et l\'expérience utilisateur.',
+                descriptionEN: 'Professional website for Blackened Corvus, a melodic metal band. Project completed with real clients focusing on visual identity and user experience.',
                 context: 'Première expérience en tant que développeur freelance. Client réel exigeant une présence web forte et une identité visuelle cohérente.',
+                contextEN: 'First experience as a freelance developer. Real client requiring a strong web presence and consistent visual identity.',
                 realization: 'Design personnalisé, développement responsive, intégration musique, galerie médias, optimisation SEO et performance.',
+                realizationEN: 'Custom design, responsive development, music integration, media gallery, SEO optimization and performance.',
                 image: './images/Blackened corvus.png',
                 link: 'https://www.canva.com/design/DAHBwT4_rlY/b7vPRiFs3wInEZyrMQEeAw/edit?utm_content=DAHBwT4_rlY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'
             },
@@ -1366,8 +1520,11 @@
                 year: '2024',
                 status: 'Terminé',
                 description: 'Projet d\'accessibilité numérique conçu spécifiquement pour les utilisateurs autistes. Respecte les normes WCAG et offre une expérience adaptée.',
+                descriptionEN: 'Digital accessibility project designed specifically for autistic users. Meets WCAG standards and provides an adapted experience.',
                 context: 'Projet fondamental pour comprendre l\'importance de l\'accessibilité web. Conception inclusive et respect des bonnes pratiques.',
+                contextEN: 'Fundamental project to understand the importance of web accessibility. Inclusive design and adherence to best practices.',
                 realization: 'Normes WCAG 2.1 AA, contrastes optimisés, navigation au clavier, textes alternatifs, réduction des animations optionnelle.',
+                realizationEN: 'WCAG 2.1 AA standards, optimized contrast, keyboard navigation, alternative text, optional animation reduction.',
                 image: './images/Autiste.png',
                 link: '#'
             },
@@ -1375,9 +1532,12 @@
                 title: 'Site Sportivea',
                 year: '2026',
                 status: 'Terminé',
-                description: 'Sportivea est une plateforme collaborative d’agenda sportif permettant de consulter, ajouter et voter pour des événements sportifs (tournois, matchs, compétitions), qu’ils soient amateurs, associatifs ou professionnels.',
-                context: 'Projet fondamental pour comprendre l\ de l\'accessibilité web. Conception inclusive et respect des bonnes pratiques.',
+                description: 'Sportivea est une plateforme collaborative d\'agenda sportif permettant de consulter, ajouter et voter pour des événements sportifs (tournois, matchs, compétitions), qu\'ils soient amateurs, associatifs ou professionnels.',
+                descriptionEN: 'Sportivea is a collaborative sports agenda platform allowing users to view, add and vote for sporting events (tournaments, matches, competitions), whether amateur, associative or professional.',
+                context: 'Projet fondamental pour comprendre l\'importance de l\'accessibilité web. Conception inclusive et respect des bonnes pratiques.',
+                contextEN: 'Fundamental project to understand collaborative platforms and event management. Complete development and deployment.',
                 realization: 'Developpement en node.js, express, react, gestion de base de données avec mysql, intégration d\'API tierces pour les données sportives, fonctionnalités de vote et de calendrier interactif.',
+                realizationEN: 'Development in node.js, express, react, database management with mysql, integration of third-party APIs for sports data, voting and interactive calendar features.',
                 image: './images/sportivea.png',
                 link: 'http://sportivea.alwaysdata.net/'
             },
@@ -1386,8 +1546,11 @@
                 year: '2025',
                 status: 'Terminé',
                 description: 'Rapport détaillé de mon expérience de 11 semaines au Technicentre des Ardoines. Documentation complète des apprentissages et des projets réalisés.',
+                descriptionEN: 'Detailed report of my 11-week experience at Technicentre des Ardoines. Complete documentation of learning and completed projects.',
                 context: 'Stage de fin de 2ème année de BUT MMI. Immersion dans un environnement professionnel réel au sein de la direction digitale de SNCF.',
+                contextEN: 'End-of-second-year internship for BUT MMI. Immersion in a real professional environment within SNCF\'s digital management.',
                 realization: 'Documentation professionnelle, analyses de projets, retours d\'expérience, recommandations et réflexions sur mon développement professionnel.',
+                realizationEN: 'Professional documentation, project analysis, experience feedback, recommendations and reflections on my professional development.',
                 image: './images/rapport-sncf.png',
                 link: './Rapport de stage.pdf'
             },
@@ -1396,8 +1559,11 @@
                 year: '2023-2024',
                 status: 'Diversifiés',
                 description: 'Collection de projets de design graphique réalisés avec la suite Adobe (Photoshop, Illustrator, InDesign). Explorant différents styles et techniques.',
+                descriptionEN: 'Collection of graphic design projects created with Adobe Suite (Photoshop, Illustrator, InDesign). Exploring different styles and techniques.',
                 context: 'Formation continue en design graphique. Exploration de différents domaines : identité visuelle, affiche, emballage, design print.',
+                contextEN: 'Continuous training in graphic design. Exploration of different fields: visual identity, posters, packaging, print design.',
                 realization: 'Adobe Creative Suite, design graphique, illustration, mise en page professionnelle et gestion des couleurs avancée.',
+                realizationEN: 'Adobe Creative Suite, graphic design, illustration, professional layout and advanced color management.',
                 image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
                 link: '#'
             }
@@ -1479,16 +1645,73 @@
                 langButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
+                // Mettre à jour le CV link
+                const cvLink = document.getElementById('printBtn');
+                if (lang === 'en') {
+                    cvLink.href = cvLink.dataset.enHref;
+                } else {
+                    cvLink.href = cvLink.dataset.frHref;
+                }
+
+                const cvLink2 = document.getElementById('cvLink');
+                if (lang === 'en') {
+                    cvLink2.href = cvLink2.dataset.enHref;
+                } else {
+                    cvLink2.href = cvLink2.dataset.frHref;
+                }
+                // Mettre à jour les textes
                 document.querySelectorAll('[data-fr]').forEach(el => {
                     if (el.dataset[lang]) {
                         el.textContent = el.dataset[lang];
+                    }
+                });
+
+                // Mettre à jour les catégories de projets
+                updateProjectCategories();
+            });
+        });
+
+        // ========== PROJECT FILTERING ==========
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        function updateProjectCategories() {
+            projectCards.forEach(card => {
+                const categories = card.querySelectorAll('.project-category');
+                categories.forEach(cat => {
+                    const fr = cat.dataset.fr;
+                    const en = cat.dataset.en;
+                    cat.textContent = currentLang === 'fr' ? fr : en;
+                });
+            });
+        }
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                const filterText = button.textContent;
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                        setTimeout(() => {
+                            card.style.opacity = '0';
+                            card.style.animation = 'none';
+                            setTimeout(() => {
+                                card.style.animation = '';
+                            }, 10);
+                        }, 0);
+                    } else {
+                        card.classList.add('hidden');
                     }
                 });
             });
         });
 
         // ========== PROJECT MODAL ==========
-        const projectCards = document.querySelectorAll('[data-project]');
         const modal = document.getElementById('projectModal');
         const modalOverlay = document.getElementById('modalOverlay');
         const closeModal = document.getElementById('closeModal');
@@ -1502,46 +1725,57 @@
 
                 if (!project) return;
 
-                // Remplir le modal
-                modalHeader.innerHTML = '<i class="bi bi-code-slash"></i>';
+                // Remplir le header avec l'image
+                modalHeader.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = project.image;
+                img.alt = project.title;
+                modalHeader.appendChild(img);
+                
+                // Remplir le contenu
+                const description = currentLang === 'fr' ? project.description : project.descriptionEN;
+                const context = currentLang === 'fr' ? project.context : project.contextEN;
+                const realization = currentLang === 'fr' ? project.realization : project.realizationEN;
+                const yearLabel = currentLang === 'fr' ? 'Année' : 'Year';
+                const statusLabel = currentLang === 'fr' ? 'Statut' : 'Status';
+                const overviewLabel = currentLang === 'fr' ? 'Présentation' : 'Overview';
+                const contextLabel = currentLang === 'fr' ? 'Contexte' : 'Context';
+                const realizationLabel = currentLang === 'fr' ? 'Réalisation' : 'Realization';
+                const viewLabel = currentLang === 'fr' ? 'Voir le projet' : 'View project';
                 
                 modalContent.innerHTML = `
                     <h2 class="modal-title">${project.title}</h2>
                     <div class="modal-meta">
                         <div class="modal-meta-item">
-                            <span class="modal-meta-label">${currentLang === 'fr' ? 'Année' : 'Year'}</span>
+                            <span class="modal-meta-label">${yearLabel}</span>
                             <span class="modal-meta-value">${project.year}</span>
                         </div>
                         <div class="modal-meta-item">
-                            <span class="modal-meta-label">${currentLang === 'fr' ? 'Statut' : 'Status'}</span>
+                            <span class="modal-meta-label">${statusLabel}</span>
                             <span class="modal-meta-value">${project.status}</span>
                         </div>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">${currentLang === 'fr' ? 'Présentation' : 'Overview'}</h3>
-                        <p class="modal-section-text">${project.description}</p>
-                    </div>
-
-                    <div class="modal-media">
-                        <img src="${project.image}" alt="${project.title}" />
+                        <h3 class="modal-section-title">${overviewLabel}</h3>
+                        <p class="modal-section-text">${description}</p>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">${currentLang === 'fr' ? 'Contexte' : 'Context'}</h3>
-                        <p class="modal-section-text">${project.context}</p>
+                        <h3 class="modal-section-title">${contextLabel}</h3>
+                        <p class="modal-section-text">${context}</p>
                     </div>
 
                     <div class="modal-section">
-                        <h3 class="modal-section-title">${currentLang === 'fr' ? 'Réalisation' : 'Realization'}</h3>
-                        <p class="modal-section-text">${project.realization}</p>
+                        <h3 class="modal-section-title">${realizationLabel}</h3>
+                        <p class="modal-section-text">${realization}</p>
                     </div>
 
                     ${project.link !== '#' ? `
                         <div class="modal-section">
                             <a href="${project.link}" target="_blank" class="btn btn-primary">
                                 <i class="bi bi-arrow-up-right"></i>
-                                ${currentLang === 'fr' ? 'Voir le projet' : 'View project'}
+                                ${viewLabel}
                             </a>
                         </div>
                     ` : ''}
@@ -1574,28 +1808,23 @@
                 document.body.style.overflow = 'auto';
             }
         });
-
-        // ========== SMOOTH SCROLL ANIMATION ==========
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observer pour d'autres éléments si nécessaire
-        document.querySelectorAll('.timeline-item, .project-card').forEach(el => {
-            if (el.style.opacity === '0') {
-                observer.observe(el);
-            }
-        });
+    </script>
+    <script src="three.r134.min.js"></script>
+    <script src="vanta.globe.min.js"></script>
+    <script>
+        VANTA.GLOBE({
+        el: "#your-element-selector",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x993fff,
+        size: 0.60,
+        backgroundColor: 0xf0816
+        })
     </script>
 </body>
 </html>
