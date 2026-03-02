@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evan Corbiere - Portfolio Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #0f0f0f; color: white; }
+        
+        #hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #vanta-hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        p { font-size: 1.2rem; color: #ccc; }
+
+        .debug {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            max-width: 300px;
+            border: 1px solid #a855f7;
+            z-index: 9999;
+        }
+
+        .debug.success { border-color: #00ff00; }
+        .debug.error { border-color: #ff0000; }
+    </style>
+</head>
+<body>
+    <section id="hero">
+        <div id="vanta-hero"></div>
+        <div class="hero-content">
+            <h1>🌍 Vanta Globe Test</h1>
+            <p>Si tu vois un globe violet tournant en arrière-plan, c'est bon !</p>
+        </div>
+    </section>
+
+    <div class="debug" id="debug">Chargement...</div>
+
+    <!-- Version 1 : CDN directement de Vanta (officiel) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@0.5.0/dist/vanta.globe.min.js"></script>
+
+    <script>
+        const debugEl = document.getElementById('debug');
+
+        // Vérifier que Three.js est chargé
+        if (typeof THREE !== 'undefined') {
+            debugEl.textContent = '✅ Three.js chargé';
+            debugEl.className = 'debug success';
+        } else {
+            debugEl.textContent = '❌ Three.js NOT loaded';
+            debugEl.className = 'debug error';
+        }
+
+        // Attendre un peu et essayer Vanta
+        setTimeout(() => {
+            if (typeof VANTA !== 'undefined') {
+                debugEl.textContent = '✅ VANTA chargé\n▶️ Initialisation du globe...';
+                debugEl.className = 'debug success';
+
+                try {
+                    VANTA.GLOBE({
+                        el: '#vanta-hero',
+                        mouseControls: true,
+                        touchControls: true,
+                        minHeight: 200,
+                        minWidth: 200,
+                        scale: 1.0,
+                        scaleMobile: 1.0,
+                        color: 0xa855f7,
+                        backgroundColor: 0x0f0f0f,
+                        size: 0.6
+                    });
+                    debugEl.textContent = '✅ Globe initialisé avec succès !';
+                    debugEl.className = 'debug success';
+                } catch (err) {
+                    debugEl.textContent = `❌ Erreur Vanta:\n${err.message}`;
+                    debugEl.className = 'debug error';
+                }
+            } else {
+                debugEl.textContent = '❌ VANTA NOT loaded\nVérifier les CDN...';
+                debugEl.className = 'debug error';
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
